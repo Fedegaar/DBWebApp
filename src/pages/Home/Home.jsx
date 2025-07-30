@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { getAllCharacters } from "../../services/dragonBallApi";
+import { getAllCharacters } from "../../services/api";
+import Characters from "../Characters/Characters";
+
 
 
 const Home = () => {
-  const [characters, setCharacters] = useState([]);
+  const [personajes, setPersonajes] = useState([]);
 
   useEffect(() => {
     const fetchCharacters = async () => {
       const data = await getAllCharacters();
-      setCharacters(data);
+      setPersonajes(data);
     };
 
     fetchCharacters();
@@ -16,12 +18,8 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Personajes:</h1>
-      <ul>
-        {characters.map((char) => (
-          <li key={char.id}>{char.name}</li>
-        ))}
-      </ul>
+  <h1>Personajes de Dragon Ball</h1>
+  <Characters personajes={personajes} />
     </div>
   );
 };
