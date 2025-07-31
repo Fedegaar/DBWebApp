@@ -5,7 +5,7 @@ export const getAllCharacters = async () => {
     const response = await fetch(API_URL);
     if (!response.ok) throw new Error("Error al obtener los personajes");
     const data = await response.json();
-    return data.items; // Ajustá según cómo venga la data exacta
+    return console.log(data); // Ajustá según cómo venga la data exacta
   } catch (error) {
     console.error("Error en getAllCharacters:", error);
     return [];
