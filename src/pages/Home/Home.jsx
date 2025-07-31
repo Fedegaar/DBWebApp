@@ -1,14 +1,12 @@
 import React from 'react'
-import Contador from '../../components/Contador/Contador'
-import Characters from '../Characters/Characters'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
   return (
     <div>
-      <h1>Bienvenidos</h1>
-      <Contador/>
-      <Characters/>
+      <h1>Bienvenidos a la Dragon Ball Web App</h1>
+      <Link to="/characters">Ver Personajes</Link>
     </div>
   )
 }
