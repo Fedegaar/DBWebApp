@@ -7,7 +7,7 @@ import Card from '../../components/Card/Card';
 
 
 
-const Characters = (data) => {
+const Characters = () => {
 
   //const [personajes, setPersonajes] = useState([])
   const dispatch = useDispatch();
