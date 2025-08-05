@@ -3,6 +3,7 @@ import { getAllCharacters } from '../../services/api'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { setCharacters } from '../../store/slices/charactersSlice';
+import Card from '../../components/Card/Card';
 
 
 
@@ -22,9 +23,15 @@ useEffect(() => {
     <div>
       <h1>Personajes de Dragon Ball</h1>
         {personajes.map(p =>
-            <li key={p.id}>
-              <Link to={`/characters/${p.id}`}>{p.name}</Link>
-            </li>
+          <Card 
+              key={p.id}
+              id={p.id}
+              image={p.image}
+              name={p.name}
+              race={p.race}
+              maxKi={p.maxKi}
+              affiliation={p.affiliation}
+          />
         )}
       <Link to="/home">Volver a Inicio</Link>
     </div>

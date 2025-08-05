@@ -1,11 +1,13 @@
 import React from 'react'
 
-const Card = () => {
+const Card = ({image, name, race, maxKi, affiliation}) => {
   return (
     <div>
-        <h3>Name</h3>
-        <h5>Total KI</h5>
-        <h5>Afiliacion</h5>
+        <img src={image} alt="image" />
+        <h3>{name}</h3>
+        <h5>Raza: {race}</h5>
+        <h5>KI maximo: {maxKi}</h5>
+        <h5>Afiliacion: {affiliation}</h5>
     </div>
   )
 }
