@@ -8,12 +8,12 @@ import LandingPage from './pages/LandingPage/LandingPage.jsx'
 import Planets from './pages/Planets/Planets.jsx'
 
 
-
 function App() {
 
   return (
     <>
       <BrowserRouter>
+        <Header/>
         <Routes>
           <Route path="/" element={<LandingPage/>}/>
           <Route path="/home" element={<Home/>}/>
