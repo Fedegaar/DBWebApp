@@ -3,11 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 const charactersSlice = createSlice({
   name: 'characters',
   initialState: {
-    list: []
+    list: [],
+    links: {}
   },
   reducers: {
     setCharacters(state, action) {
-      state.list = action.payload;
+      state.list = action.payload.items;
+      state.links = action.payload.links;
+
     }
   }
 });

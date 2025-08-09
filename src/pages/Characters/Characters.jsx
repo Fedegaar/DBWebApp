@@ -12,11 +12,14 @@ const Characters = () => {
   //const [personajes, setPersonajes] = useState([])
   const dispatch = useDispatch();
   const personajes = useSelector(state => state.characters.list);
+  const links = useSelector (state => state.characters.links)
 
 
 useEffect(() => {
+  console.log("asd", personajesj)
   getAllCharacters().then(data => {
-    dispatch(setCharacters(data));
+    console.log('Personajes: ',data)
+    dispatch(setCharacters(data.items));
   });
 }, [dispatch]);
   return (
@@ -33,6 +36,8 @@ useEffect(() => {
               affiliation={p.affiliation}
           />
         )}
+      <button disabled={!links.previous} onClick={() => setCharacters(links.previous)}>Previous</button>
+      <button disabled={!links.next} onClick={() => setCharacters(links.next)}>Next</button>
       <Link to="/home">Volver a Inicio</Link>
     </div>
   )
