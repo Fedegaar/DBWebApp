@@ -14,18 +14,26 @@ const Characters = () => {
   const personajes = useSelector(state => state.characters.list);
   const links = useSelector (state => state.characters.links)
 
+  const handlePageChange = (url) => {
+     if (!url) return;
+      getAllCharacters(url).then(data => {
+     dispatch(setCharacters({ items: data.items, links: data.links }));
+     //console.log('Data:', data.items)
+    });
+  };
+
 
 useEffect(() => {
-  console.log("asd", personajesj)
   getAllCharacters().then(data => {
-    console.log('Personajes: ',data)
-    dispatch(setCharacters(data.items));
+    //console.log('Personajes: ',data.items)
+    dispatch(setCharacters({items: data.items, links: data.links}));
+    //console.log("asd", personajes )
   });
 }, [dispatch]);
   return (
     <div>
       <h1>Personajes de Dragon Ball</h1>
-        {personajes.map(p =>
+        {personajes?.map(p =>
           <Card 
               key={p.id}
               id={p.id}
@@ -36,8 +44,8 @@ useEffect(() => {
               affiliation={p.affiliation}
           />
         )}
-      <button disabled={!links.previous} onClick={() => setCharacters(links.previous)}>Previous</button>
-      <button disabled={!links.next} onClick={() => setCharacters(links.next)}>Next</button>
+      <button disabled={!links.previous} onClick={() => handlePageChange(links.previous)}>Previous</button>
+      <button disabled={!links.next} onClick={() => handlePageChange(links.next)}>Next</button>
       <Link to="/home">Volver a Inicio</Link>
     </div>
   )

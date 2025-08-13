@@ -8,8 +8,8 @@ const charactersSlice = createSlice({
   },
   reducers: {
     setCharacters(state, action) {
-      state.list = action.payload.items;
-      state.links = action.payload.links;
+      state.list = action.payload.items || [];
+      state.links = action.payload.links || {};
 
     }
   }

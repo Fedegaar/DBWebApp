@@ -1,12 +1,11 @@
 const CHARACTERS_URL = "https://dragonball-api.com/api/characters";
 const PLANETS_URL = "https://dragonball-api.com/api/planets"
 
-export const getAllCharacters = async () => {
+export const getAllCharacters = async (url = CHARACTERS_URL) => {
   try {
-    const response = await fetch(CHARACTERS_URL);
+    const response = await fetch(url);
     if (!response.ok) throw new Error("Error al obtener los personajes");
     const charactersData = await response.json();
-    //return console.log(charactersData.items); 
     return charactersData;
   } catch (error) {
     console.error("Error en getAllCharacters:", error);
