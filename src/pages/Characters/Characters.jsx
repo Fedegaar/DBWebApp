@@ -23,13 +23,15 @@ const Characters = () => {
   };
 
 
-useEffect(() => {
-  getAllCharacters().then(data => {
-    //console.log('Personajes: ',data.items)
-    dispatch(setCharacters({items: data.items, links: data.links}));
-    //console.log("asd", personajes )
-  });
-}, [dispatch]);
+  useEffect(() => {
+    getAllCharacters().then(data => {
+     //console.log('Personajes: ',data.items)
+     dispatch(setCharacters({items: data.items, links: data.links}));
+     //console.log("asd", personajes )
+    });
+  }, [dispatch]);
+
+
   return (
     <div>
       <h1>Personajes de Dragon Ball</h1>

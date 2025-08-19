@@ -3,11 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const planetsSlice = createSlice({
   name: 'planets',
   initialState: {
-    list: []
+    list: [],
+    links: {}
   },
   reducers: {
     setPlanets(state, action) {
-      state.list = action.payload;
+      state.list = action.payload.items || [];
+      state.links = action.payload.links || {};
     }
   }
 });

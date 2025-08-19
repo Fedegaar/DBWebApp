@@ -19,8 +19,8 @@ export const getAllPlanets = async () => {
     const response = await fetch (PLANETS_URL);
     if (!response.ok) throw new Error ("Error al obtener los planetas");
     const planetsData = await response.json();
-    //return console.log(planetsData.items)
-    return planetsData.items;
+    //return console.log("All data of planets",planetsData);
+    return planetsData;
   } catch (error) {
     console.error ("Error en getAllPlanets", error);
     return [];

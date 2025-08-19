@@ -9,14 +9,26 @@ const Planets = () => {
 
     const dispatch = useDispatch();
     const planetas = useSelector(state => state.planets.list);
+    const links = useSelector (state => state.planets.links)
+
+    const handlePageChange = (url) => {
+        if (!url) return;
+        getAllPlanets(url).then(data => {
+            dispatch(setPlanets({ items: data.items, links: data.links }));
+            //console.log('Data:', data.items)
+        });
+      };
 
 
     useEffect(() => {
-        getAllPlanets().then(planetsData => {
-            dispatch(setPlanets(planetsData))
-            console.log('Estos son los planetas', planetsData)
-        })
+        getAllPlanets().then(data => {
+        //console.log('Planetas: ',data.items)
+        dispatch(setPlanets({items: data.items, links: data.links}));
+        console.log("asd", planetas )
+        });
     }, [dispatch]);
+
+
     return (
         <div>
             <h1>Planetas de Dragon Ball</h1>
@@ -25,10 +37,13 @@ const Planets = () => {
                     key={p.id}
                     id={p.id}
                     image={p.image}
-                    name={p.name}                   
+                    name={p.name}
+                    description={p.description}                   
                 />
             )}
             <Link to="/home">Volver al inicio</Link>
+            <button disabled={!links.previous} onClick={() => handlePageChange(links.previous)}>Previous</button>
+            <button disabled={!links.next} onClick={() => handlePageChange(links.next)}>Next</button>
         </div>
     )
 }
